@@ -28,7 +28,7 @@ const getOffer = function () {
     },
     offer: {
         title: getRandomItem(TITLE_OFFER),
-        address: 'location.x  location.y',
+        address: 'location.x location.y',
         price: getRandomItem(PRICE_OFFER),
         type: getRandomItem(TYPE_OFFER),
         rooms: getRandomItem(COUNT_ROOMS_AND_GUESTS),
