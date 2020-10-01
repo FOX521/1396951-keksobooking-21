@@ -1,7 +1,6 @@
 let mapContainer = document.querySelector('.map__pins');
 let mapPin = mapContainer.querySelector('.map__pins');
 let offWidth = Math.floor(mapContainer.offsetWidth);
-
 const TITLE_OFFER = ['Хостел для друзей', 'Отель Мэриланд','В гостях у бомжа', 'Армейский стиль', 'Гостиница Харакири', 'У троля под мостом', 'Отель съешь собаку', 'Токийский сон'];
 const PRICE_OFFER = [1000, 1500, 2000, 2500, 3500, 4000];
 const TYPE_OFFER = [ 'palace', 'flat', 'house', 'bungalow'];
