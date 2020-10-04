@@ -1,5 +1,8 @@
 let mapContainer = document.querySelector('.map__pins');
-let mapPin = mapContainer.querySelector('.map__pins');
+const MIN_TITLE_LENGTH = 10;
+const MAX_TITLE_LENGTH = 50;
+const MIN_ADDRES_LENGTH = 5;
+const MAX_ADDRES_LENGTH = 20;
 let offWidth = Math.floor(mapContainer.offsetWidth);
 const TITLE_OFFER = ['Хостел для друзей', 'Отель Мэриланд','В гостях у бомжа', 'Армейский стиль', 'Гостиница Харакири', 'У троля под мостом', 'Отель съешь собаку', 'Токийский сон'];
 const PRICE_OFFER = [1000, 1500, 2000, 2500, 3500, 4000];
@@ -46,6 +49,7 @@ const getOffer = function () {
   }
 }
 
+
 const flatList = [];
 
 const getFlatList = function (count) {
@@ -67,7 +71,7 @@ const makeElement = function (tagName, className) {
 const createObj = function (newObject) {
   let objectItem = makeElement('button','map__pin');
   let picture = makeElement('img');
-  picture.setAttribute('alt', newObject.offer.title)
+  picture.setAttribute('alt', newObject.offer.title);
   picture.setAttribute('src', newObject.author.avatar);
   picture.setAttribute('width', '40');
   picture.setAttribute('height', '40');
@@ -75,35 +79,10 @@ const createObj = function (newObject) {
   objectItem.setAttribute('style', `left:${newObject.location.x}px; top: ${newObject.location.y}px`);
   return objectItem;
 }
+/*
 
 for (let i =0; i < flatList.length; i++) {
   let item = createObj(flatList[i]);
   mapContainer.appendChild(item);
 }
-
-const addInfo = function (newCloneInfo) {
-let flatElement = flatList[0];
-newCloneInfo.querySelector('H3').textContent = flatElement.offer.title;
-newCloneInfo.querySelector('.popup__text--address').textContent = flatElement.offer.address;
-newCloneInfo.querySelector('.popup__text--price').textContent = flatElement.offer.price + ' ₽/ночь';
-newCloneInfo.querySelector('.popup__type').textContent = flatElement.offer.type;
-newCloneInfo.querySelector('.popup__text--capacity').textContent = flatElement.offer.rooms + ' комнаты для ' + flatElement.offer.guests + ' гостей';
-newCloneInfo.querySelector('.popup__text--time').textContent = 'Заезд после ' + flatElement.offer.checkin + ' , выезд до ' + flatElement.offer.checkout;
-newCloneInfo.querySelector('.popup__features').textContent =  flatElement.offer.features;
-newCloneInfo.querySelector('.popup__description').textContent = flatElement.offer.description;
-newCloneInfo.querySelector('.popup__photo').setAttribute('src', flatElement.offer.photos);
-newCloneInfo.querySelector('.popup__avatar').setAttribute('src', flatElement.author.avatar);
-return newCloneInfo;
-}
-
-const getClone = function (getId, getElement) {
-  let templateCard = document.querySelector(getId).content;
-  let element = templateCard.querySelector(getElement);
-  let cloneElement = element.cloneNode(true);
-  let newCloneElement = addInfo(cloneElement);
-  mapContainer.appendChild(newCloneElement);
-}
-
-getClone('#card', 'article');
-
-
+*/
