@@ -11,7 +11,7 @@
     adForm : adForm
   };
 
-  const addDisable = function () {
+  (function () {
     for (let i = 0; i < fieldsetForm.length; i ++) {
       fieldsetForm[i].setAttribute('disabled', 'disabled');
     };
@@ -21,9 +21,7 @@
     for (let i = 0; i < fieldsetMapFilters.length; i ++) {
       fieldsetMapFilters[i].setAttribute('disabled', 'disabled');
     };
-    };
-
-    addDisable();
+  })()
 
     mapPinMain.addEventListener('mousedown', function (evt){
       if (evt.button === 0) {
@@ -50,5 +48,7 @@
     for (let i = 0; i < fieldsetMapFilters.length; i ++) {
       fieldsetMapFilters[i].removeAttribute('disabled');
     }
+    makeOffer();
+    getClone('#card', 'article');
     };
 })();

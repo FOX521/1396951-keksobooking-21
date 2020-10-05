@@ -1,4 +1,4 @@
-/*(function () {
+(function () {
   const addInfo = function (newCloneInfo) {
     let flatElement = flatList[0];
     newCloneInfo.querySelector('H3').textContent = flatElement.offer.title;
@@ -14,13 +14,11 @@
     return newCloneInfo;
     }
 
-    const getClone = function (getId, getElement) {
+    window.getClone = function (getId, getElement) {
       let templateCard = document.querySelector(getId).content;
       let element = templateCard.querySelector(getElement);
       let cloneElement = element.cloneNode(true);
       let newCloneElement = addInfo(cloneElement);
       mapContainer.appendChild(newCloneElement);
     }
-
-    getClone('#card', 'article');
-})();*/
+})();

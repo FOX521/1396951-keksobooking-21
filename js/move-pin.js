@@ -4,6 +4,9 @@ let buttonPin = mapContainer.querySelector('button');
 buttonPin.addEventListener('mousedown', function(evt) {
   evt.preventDefault();
 
+  let resultTop = buttonPin.offsetTop;
+  let resultLeft = buttonPin.offsetLeft;
+
   let startCoords = {
     x : evt.clientX,
     y : evt.clientY
@@ -22,21 +25,16 @@ buttonPin.addEventListener('mousedown', function(evt) {
       y : moveEvt.clientY
     };
 
-    let resultTop = Math.floor(buttonPin.offsetTop - shift.y);
-    let resultLeft = Math.floor(buttonPin.offsetLeft - shift.x);
-
+    resultTop = Math.floor(buttonPin.offsetTop - shift.y);
+    resultLeft = Math.floor(buttonPin.offsetLeft - shift.x);
     buttonPin.style.top  = resultTop + 'px';
     buttonPin.style.left = resultLeft + 'px';
-
-    window.movePin = {
-       resultTop : resultTop,
-       resultLeft : resultLeft
-    };
+    window.validateForm.setAdress({resultTop, resultLeft});
   }
 
   const onMouseUp = function(upEvt) {
    upEvt.preventDefault();
-
+   window.validateForm.setAdress({resultTop, resultLeft});
    mapContainer.removeEventListener('mousemove', onMouseMove);
    mapContainer.removeEventListener('mouseup', onMouseUp);
   }

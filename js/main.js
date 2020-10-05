@@ -59,7 +59,6 @@ const getFlatList = function (count) {
   return flatList;
 };
 
-
 getFlatList(8);
 
 const makeElement = function (tagName, className) {
@@ -79,10 +78,15 @@ const createObj = function (newObject) {
   objectItem.setAttribute('style', `left:${newObject.location.x}px; top: ${newObject.location.y}px`);
   return objectItem;
 }
-/*
 
-for (let i =0; i < flatList.length; i++) {
+const makeOffer = function () {
+  for (let i =0; i < flatList.length; i++) {
   let item = createObj(flatList[i]);
   mapContainer.appendChild(item);
+};
+};
+
+window.main = {
+  makeOffer
 }
-*/
+
