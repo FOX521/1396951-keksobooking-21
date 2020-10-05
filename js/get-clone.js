@@ -1,5 +1,12 @@
 (function () {
-  const addInfo = function (newCloneInfo) {
+
+mapContainer.addEventListener('click', function (evt) {
+  let pop = evt.target.value;
+  console.log(pop)
+});
+
+
+  window.addInfo = function (newCloneInfo) {
     let flatElement = flatList[0];
     newCloneInfo.querySelector('H3').textContent = flatElement.offer.title;
     newCloneInfo.querySelector('.popup__text--address').textContent = flatElement.offer.address;
