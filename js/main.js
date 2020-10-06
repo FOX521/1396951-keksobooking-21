@@ -1,10 +1,12 @@
 let mapContainer = document.querySelector('.map__pins');
-let mapPin = mapContainer.querySelector('.map__pins');
+const MIN_TITLE_LENGTH = 10;
+const MAX_TITLE_LENGTH = 50;
+const MIN_ADDRES_LENGTH = 5;
+const MAX_ADDRES_LENGTH = 20;
 let offWidth = Math.floor(mapContainer.offsetWidth);
-
 const TITLE_OFFER = ['Хостел для друзей', 'Отель Мэриланд','В гостях у бомжа', 'Армейский стиль', 'Гостиница Харакири', 'У троля под мостом', 'Отель съешь собаку', 'Токийский сон'];
 const PRICE_OFFER = [1000, 1500, 2000, 2500, 3500, 4000];
-const TYPE_OFFER = [ 'palace', 'flat', 'house', 'bungalow'];
+const TYPE_OFFER = [ 'Дворец', 'Квартира', 'Дом', 'Бунгало'];
 const COUNT_ROOMS_AND_GUESTS = [1, 2, 3, 4];
 const CHECKIN_CHECKOUT = ['12:00', '13:00', '14:00'];
 const FEATURES = ["wifi", "dishwasher", "parking", "washer", "elevator", "conditioner"];
@@ -47,6 +49,7 @@ const getOffer = function () {
   }
 }
 
+
 const flatList = [];
 
 const getFlatList = function (count) {
@@ -67,7 +70,7 @@ const makeElement = function (tagName, className) {
 const createObj = function (newObject) {
   let objectItem = makeElement('button','map__pin');
   let picture = makeElement('img');
-  picture.setAttribute('alt', newObject.offer.title)
+  picture.setAttribute('alt', newObject.offer.title);
   picture.setAttribute('src', newObject.author.avatar);
   picture.setAttribute('width', '40');
   picture.setAttribute('height', '40');
@@ -76,7 +79,14 @@ const createObj = function (newObject) {
   return objectItem;
 }
 
-for (let i =0; i < flatList.length; i++) {
+const makeOffer = function () {
+  for (let i =0; i < flatList.length; i++) {
   let item = createObj(flatList[i]);
   mapContainer.appendChild(item);
+};
+};
+
+window.main = {
+  makeOffer
 }
+
