@@ -32,7 +32,6 @@
     mapPinMain.addEventListener('keydown', function (evt){
       if(evt.keyCode === 13){
         activeMap();
-        console.log(13)
       }
     });
 
@@ -49,6 +48,5 @@
       fieldsetMapFilters[i].removeAttribute('disabled');
     }
     makeOffer();
-    getClone('#card', 'article');
     };
 })();

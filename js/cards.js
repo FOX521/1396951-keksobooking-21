@@ -1,6 +1,18 @@
 (function () {
-  const addInfo = function (newCloneInfo) {
-    let flatElement = flatList[0];
+  let newCloneElement;
+  let mapPins = mapContainer.querySelectorAll('.map__pin');
+  const POPUP_CLOSE = 'popup__close';
+  const VISUALLY_HIDDEN = 'visually-hidden';
+  let index ;
+
+  mapContainer.addEventListener('click', function (evt) {
+      index = Number(evt.target.getAttribute('data-index'));
+      console.log(index);
+      getClone('#card', 'article');
+  });
+
+  window.addInfo = function (newCloneInfo) {
+    let flatElement = flatList[index];
     newCloneInfo.querySelector('H3').textContent = flatElement.offer.title;
     newCloneInfo.querySelector('.popup__text--address').textContent = flatElement.offer.address;
     newCloneInfo.querySelector('.popup__text--price').textContent = flatElement.offer.price + ' ₽/ночь';
@@ -18,7 +30,7 @@
       let templateCard = document.querySelector(getId).content;
       let element = templateCard.querySelector(getElement);
       let cloneElement = element.cloneNode(true);
-      let newCloneElement = addInfo(cloneElement);
+      newCloneElement = addInfo(cloneElement);
       mapContainer.appendChild(newCloneElement);
     }
 })();

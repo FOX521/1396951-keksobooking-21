@@ -12,7 +12,7 @@ const CHECKIN_CHECKOUT = ['12:00', '13:00', '14:00'];
 const FEATURES = ["wifi", "dishwasher", "parking", "washer", "elevator", "conditioner"];
 const DESCRIPTION = ['Прикольный отель', 'Гостиница что надо', 'Мост на 5 звезд'];
 const PHOTO_ROOMS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-
+let index;
 const getRandomInteger = function (min, max) {
   let rand = min - 0.5 + Math.random() * (max - min + 1);
   return Math.round(rand);
@@ -76,11 +76,13 @@ const createObj = function (newObject) {
   picture.setAttribute('height', '40');
   objectItem.appendChild(picture);
   objectItem.setAttribute('style', `left:${newObject.location.x}px; top: ${newObject.location.y}px`);
+  objectItem.setAttribute('data-index', index);
   return objectItem;
 }
 
 const makeOffer = function () {
   for (let i =0; i < flatList.length; i++) {
+  index = i;
   let item = createObj(flatList[i]);
   mapContainer.appendChild(item);
 };
