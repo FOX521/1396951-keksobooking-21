@@ -1,6 +1,4 @@
 (function () {
-  window.makeOffer = function () {
-
     const makeElement = function (tagName, className) {
         let element = document.createElement(tagName);
         element.classList.add(className);
@@ -9,7 +7,7 @@
 
       const createObj = function (newObject) {
         let objectItem = makeElement('button','map__pin');
-        let picture = makeElement('img');
+        let picture = makeElement('img', 'map__pin--img');
         picture.setAttribute('alt', newObject.offer.title);
         picture.setAttribute('src', newObject.author.avatar);
         picture.setAttribute('width', '40');
@@ -27,5 +25,5 @@
         mapContainer.appendChild(item);
       };
       };
-  };
+  window.makePin = {makeOffer, makeElement};
   })();
