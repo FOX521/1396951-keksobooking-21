@@ -1,18 +1,21 @@
 (function () {
   let newCloneElement;
-  let mapPins = mapContainer.querySelectorAll('.map__pin');
   const POPUP_CLOSE = 'popup__close';
-  const VISUALLY_HIDDEN = 'visually-hidden';
-  let index ;
+  let popup;
+  let index;
 
   mapContainer.addEventListener('click', function (evt) {
+    if(evt.target.className === 'map__pin') {
       index = Number(evt.target.getAttribute('data-index'));
-      console.log(index);
       getClone('#card', 'article');
-  });
+    } else if (evt.target.className === POPUP_CLOSE) {
+      popup = document.querySelector('.popup');
+      popup.remove();
+    }
+    });
 
   window.addInfo = function (newCloneInfo) {
-    let flatElement = flatList[index];
+    let flatElement = dataOffer[index];
     newCloneInfo.querySelector('H3').textContent = flatElement.offer.title;
     newCloneInfo.querySelector('.popup__text--address').textContent = flatElement.offer.address;
     newCloneInfo.querySelector('.popup__text--price').textContent = flatElement.offer.price + ' ₽/ночь';
@@ -21,7 +24,7 @@
     newCloneInfo.querySelector('.popup__text--time').textContent = 'Заезд после ' + flatElement.offer.checkin + ' , выезд до ' + flatElement.offer.checkout;
     newCloneInfo.querySelector('.popup__features').textContent =  flatElement.offer.features;
     newCloneInfo.querySelector('.popup__description').textContent = flatElement.offer.description;
-    newCloneInfo.querySelector('.popup__photo').setAttribute('src', flatElement.offer.photos);
+    newCloneInfo.querySelector('.popup__photo').setAttribute('src', getRandomItem(flatElement.offer.photos));
     newCloneInfo.querySelector('.popup__avatar').setAttribute('src', flatElement.author.avatar);
     return newCloneInfo;
     }
@@ -32,5 +35,5 @@
       let cloneElement = element.cloneNode(true);
       newCloneElement = addInfo(cloneElement);
       mapContainer.appendChild(newCloneElement);
-    }
+    };
 })();
