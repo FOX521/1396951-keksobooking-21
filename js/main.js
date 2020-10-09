@@ -1,4 +1,5 @@
 let mapContainer = document.querySelector('.map__pins');
+let form = document.querySelector('.ad-form');
 const MIN_TITLE_LENGTH = 10;
 const MAX_TITLE_LENGTH = 50;
 const MIN_ADDRES_LENGTH = 5;

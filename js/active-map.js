@@ -11,7 +11,7 @@
     adForm : adForm
   };
 
-  (function () {
+  window.disabledMap = function () {
     for (let i = 0; i < fieldsetForm.length; i ++) {
       fieldsetForm[i].setAttribute('disabled', 'disabled');
     };
@@ -21,7 +21,9 @@
     for (let i = 0; i < fieldsetMapFilters.length; i ++) {
       fieldsetMapFilters[i].setAttribute('disabled', 'disabled');
     };
-  })()
+  };
+
+  disabledMap();
 
     mapPinMain.addEventListener('mousedown', function (evt){
       if (evt.button === 0) {
