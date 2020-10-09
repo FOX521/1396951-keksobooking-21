@@ -1,4 +1,6 @@
+'use strict';
 (function () {
+  let items = []
     const makeElement = function (tagName, className) {
         let element = document.createElement(tagName);
         element.classList.add(className);
@@ -18,12 +20,16 @@
         return objectItem;
       }
 
-      window.makeOffer = function () {
+      let makeOffer = function () {
         for (let i =0; i < dataOffer.length; i++) {
         index = i;
-        let item = createObj(dataOffer[i]);
-        mapContainer.appendChild(item);
+        items[i] = createObj(dataOffer[i]);
+        mapContainer.appendChild(items[i]);
       };
       };
-  window.makePin = {makeOffer, makeElement};
+  window.makePin = {
+    makeOffer : makeOffer,
+    makeElement : makeElement,
+    items : items
+  };
   })();

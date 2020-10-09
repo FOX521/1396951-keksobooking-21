@@ -1,3 +1,4 @@
+'use strict';
 (function () {
   let adForm = document.querySelector('.ad-form');
   let fieldsetForm = adForm.querySelectorAll('fieldset');
@@ -21,6 +22,8 @@
     for (let i = 0; i < fieldsetMapFilters.length; i ++) {
       fieldsetMapFilters[i].setAttribute('disabled', 'disabled');
     };
+    mainMap.classList.add('map--faded');
+    adForm.classList.add('ad-form--disabled');
   };
 
   disabledMap();
@@ -49,6 +52,6 @@
     for (let i = 0; i < fieldsetMapFilters.length; i ++) {
       fieldsetMapFilters[i].removeAttribute('disabled');
     }
-    makeOffer();
+    window.makePin.makeOffer();
     };
 })();

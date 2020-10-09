@@ -1,3 +1,4 @@
+'use strict';
 (function () {
   let newCloneElement;
   const POPUP_CLOSE = 'popup__close';

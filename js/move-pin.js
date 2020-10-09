@@ -1,3 +1,4 @@
+'use strict';
 (function () {
 let buttonPin = mapContainer.querySelector('button');
 
