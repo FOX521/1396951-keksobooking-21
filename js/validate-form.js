@@ -10,7 +10,7 @@ let chooseGuests = Number(countGuests.value);
 
 resetForm.addEventListener('click', function (evt) {
   evt.preventDefault();
-  window.upload.clearForm();
+  clearForm();
 })
 
 titleForm.addEventListener('input', function () {
@@ -62,7 +62,12 @@ const compare = function () {
   }
 };
 
+const clearForm = function () {
+  form.reset();
+};
+
 window.validateForm = {
-  setAdress
+  setAdress : setAdress,
+  clearForm : clearForm
 }
 })();

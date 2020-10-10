@@ -62,22 +62,14 @@
     });
   };
   removeClonePin();
-  clearForm();
+  window.validateForm.clearForm();
   };
 
   const removePopup = function (removeElement) {
    removeElement.remove();
   };
 
-  const removeClonePin = function () {
+  window.removeClonePin = function () {
     window.makePin.items.forEach((element) => element.remove());
-  };
-
-  const clearForm = function () {
-    form.reset();
-  };
-
-  window.upload = {
-    clearForm : clearForm
   };
 })();

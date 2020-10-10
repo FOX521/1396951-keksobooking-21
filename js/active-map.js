@@ -53,5 +53,5 @@
       fieldsetMapFilters[i].removeAttribute('disabled');
     }
     window.makePin.makeOffer();
-    };
+  };
 })();
