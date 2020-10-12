@@ -1,8 +1,4 @@
 'use strict';
-const MIN_TITLE_LENGTH = 10;
-const MAX_TITLE_LENGTH = 50;
-const MIN_ADDRES_LENGTH = 5;
-const MAX_ADDRES_LENGTH = 20;
 let mapContainer = document.querySelector('.map__pins');
 let form = document.querySelector('.ad-form');
 let offWidth = Math.floor(mapContainer.offsetWidth);
@@ -19,4 +15,3 @@ const  getRandomItem = function(list) {
   const randomIndex = getRandomInteger(0, maxIndex);
   return list[randomIndex];
 }
-
