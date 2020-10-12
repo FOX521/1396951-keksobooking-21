@@ -1,3 +1,4 @@
+'use strict';
 (function () {
   let newCloneElement;
   const POPUP_CLOSE = 'popup__close';
@@ -5,14 +6,19 @@
   let index;
 
   mapContainer.addEventListener('click', function (evt) {
-    if(evt.target.className === 'map__pin') {
+    if(evt.target.className === 'map__pin' || evt.target.className === 'map__pin--img') {
       index = Number(evt.target.getAttribute('data-index'));
+      closeCards();
       getClone('#card', 'article');
     } else if (evt.target.className === POPUP_CLOSE) {
-      popup = document.querySelector('.popup');
+      popup = evt.target.closest('.popup');
       popup.remove();
     }
     });
+
+    const closeCards = function () {
+      document.querySelectorAll('.popup').forEach((card) => card.remove())
+    }
 
   window.addInfo = function (newCloneInfo) {
     let flatElement = dataOffer[index];

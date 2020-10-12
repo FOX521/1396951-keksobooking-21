@@ -1,10 +1,17 @@
+'use strict';
 (function () {
+let resetForm = document.querySelector('.ad-form__reset');
 let titleForm = Window.activeMap.adForm.querySelector('#title');
 let addersForm = Window.activeMap.adForm.querySelector('#address');
 let roomNumber = Window.activeMap.adForm.querySelector('#room_number');
 let countGuests = Window.activeMap.adForm.querySelector('#capacity');
 let chooseRoom = Number(roomNumber.value);
 let chooseGuests = Number(countGuests.value);
+
+resetForm.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  window.upload.clearForm();
+})
 
 titleForm.addEventListener('input', function () {
   let valueLength = titleForm.value.length;

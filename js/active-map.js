@@ -1,3 +1,4 @@
+'use strict';
 (function () {
   let adForm = document.querySelector('.ad-form');
   let fieldsetForm = adForm.querySelectorAll('fieldset');
@@ -11,7 +12,7 @@
     adForm : adForm
   };
 
-  (function () {
+  window.disabledMap = function () {
     for (let i = 0; i < fieldsetForm.length; i ++) {
       fieldsetForm[i].setAttribute('disabled', 'disabled');
     };
@@ -21,7 +22,11 @@
     for (let i = 0; i < fieldsetMapFilters.length; i ++) {
       fieldsetMapFilters[i].setAttribute('disabled', 'disabled');
     };
-  })()
+    mainMap.classList.add('map--faded');
+    adForm.classList.add('ad-form--disabled');
+  };
+
+  disabledMap();
 
     mapPinMain.addEventListener('mousedown', function (evt){
       if (evt.button === 0) {
@@ -47,6 +52,6 @@
     for (let i = 0; i < fieldsetMapFilters.length; i ++) {
       fieldsetMapFilters[i].removeAttribute('disabled');
     }
-    makeOffer();
+    window.makePin.makeOffer();
     };
 })();

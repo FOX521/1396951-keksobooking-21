@@ -1,6 +1,6 @@
+'use strict';
 (function () {
-  window.makeOffer = function () {
-
+  let items = []
     const makeElement = function (tagName, className) {
         let element = document.createElement(tagName);
         element.classList.add(className);
@@ -9,7 +9,7 @@
 
       const createObj = function (newObject) {
         let objectItem = makeElement('button','map__pin');
-        let picture = makeElement('img');
+        let picture = makeElement('img', 'map__pin--img');
         picture.setAttribute('alt', newObject.offer.title);
         picture.setAttribute('src', newObject.author.avatar);
         picture.setAttribute('width', '40');
@@ -20,12 +20,16 @@
         return objectItem;
       }
 
-      window.makeOffer = function () {
+      let makeOffer = function () {
         for (let i =0; i < dataOffer.length; i++) {
         index = i;
-        let item = createObj(dataOffer[i]);
-        mapContainer.appendChild(item);
+        items[i] = createObj(dataOffer[i]);
+        mapContainer.appendChild(items[i]);
       };
       };
+  window.makePin = {
+    makeOffer : makeOffer,
+    makeElement : makeElement,
+    items : items
   };
   })();
