@@ -5,14 +5,13 @@
         console.log(error);
     };
     const onSucces = function(animals) {
-        console.log(animals);
     };
     xhr.addEventListener('load', function() {
         let error;
         switch (xhr.status) {
             case 200:
                 onSucces(xhr.response);
-                dataOffer = JSON.parse(xhr.responseText);
+                window.dataOffer = JSON.parse(xhr.responseText);
                 break;
             case 400:
                 error = 'Неверный запрос';

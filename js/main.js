@@ -3,7 +3,7 @@ let mapContainer = document.querySelector('.map__pins');
 let form = document.querySelector('.ad-form');
 let offWidth = Math.floor(mapContainer.offsetWidth);
 let index;
-let dataOffer = [];
+
 
 const getRandomInteger = function (min, max) {
   let rand = min - 0.5 + Math.random() * (max - min + 1);
