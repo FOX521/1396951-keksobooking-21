@@ -4,6 +4,14 @@
     const POPUP_CLOSE = 'popup__close';
     let popup;
     let index;
+
+    const typeTOFlat  = {
+        flat : 'Квартира',
+        house : 'Дом',
+        bungalow : 'Бунгало',
+        palace : 'Дворец'
+    }
+
     mapContainer.addEventListener('click', function(evt) {
         if (evt.target.className === 'map__pin' || evt.target.className === 'map__pin--img') {
             index = Number(evt.target.getAttribute('data-index'));
@@ -22,7 +30,7 @@
         newCloneInfo.querySelector('H3').textContent = flatElement.offer.title;
         newCloneInfo.querySelector('.popup__text--address').textContent = flatElement.offer.address;
         newCloneInfo.querySelector('.popup__text--price').textContent = flatElement.offer.price + ' ₽/ночь';
-        newCloneInfo.querySelector('.popup__type').textContent = flatElement.offer.type;
+        newCloneInfo.querySelector('.popup__type').textContent = typeTOFlat[flatElement.offer.type];
         newCloneInfo.querySelector('.popup__text--capacity').textContent = flatElement.offer.rooms + ' комнаты для ' + flatElement.offer.guests + ' гостей';
         newCloneInfo.querySelector('.popup__text--time').textContent = 'Заезд после ' + flatElement.offer.checkin + ' , выезд до ' + flatElement.offer.checkout;
         newCloneInfo.querySelector('.popup__features').textContent = flatElement.offer.features;

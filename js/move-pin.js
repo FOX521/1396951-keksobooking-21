@@ -21,7 +21,9 @@
             };
             resultTop = Math.floor(buttonPin.offsetTop - shift.y);
             resultLeft = Math.floor(buttonPin.offsetLeft - shift.x);
-            buttonPin.style.top = resultTop + 'px';
+            if(!(resultTop < 130 || resultTop > 680)) {
+              buttonPin.style.top = resultTop + 'px';
+            }
             buttonPin.style.left = resultLeft + 'px';
             window.validateForm.setAdress({
                 resultTop,

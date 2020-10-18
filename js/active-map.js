@@ -24,9 +24,10 @@
         adForm.classList.add('ad-form--disabled');
     };
     disabledMap();
-    mapPinMain.addEventListener('mousedown', function(evt) {
+    mapPinMain.addEventListener('mousedown', function handler(evt) {
         if (evt.button === 0) {
             activeMap();
+            mapPinMain.removeEventListener('mousedown', handler)
         }
     });
     mapPinMain.addEventListener('keydown', function(evt) {
