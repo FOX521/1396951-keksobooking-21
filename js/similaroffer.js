@@ -1,7 +1,11 @@
 'use strict';
 (function () {
-    mapContainer.addEventListener('mousedown', function (evt) {
-      evt.preventDefault();
-      console.log('fff')
-    })
-})()
+  let sortOffer = [];
+  let countGuests;
+  let countRooms;
+  let typeHouse;
+
+  mapContainer.addEventListener(`click`, function (evt) {
+    evt.preventDefault();
+  });
+})();
