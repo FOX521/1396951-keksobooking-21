@@ -4,6 +4,7 @@
   const POPUP_CLOSE = `popup__close`;
   let popup;
   let index;
+  let flatElement;
   const typeTOFlat = {
     flat: `Квартира`,
     house: `Дом`,
@@ -14,7 +15,7 @@
     if (evt.target.className === `map__pin` || evt.target.className === `map__pin--img`) {
       index = Number(evt.target.getAttribute(`data-index`));
       closeCards();
-      getClone(`#card`, `article`);
+      getClone(dataOffer);
     } else if (evt.target.className === POPUP_CLOSE) {
       popup = evt.target.closest(`.popup`);
       popup.remove();
@@ -23,8 +24,8 @@
   const closeCards = function () {
     document.querySelectorAll(`.popup`).forEach((card) => card.remove());
   };
-  window.addInfo = function (newCloneInfo) {
-    let flatElement = dataOffer[index];
+  const addInfo = function (newCloneInfo, dataArray) {
+    flatElement = dataArray[index];
     newCloneInfo.querySelector(`H3`).textContent = flatElement.offer.title;
     newCloneInfo.querySelector(`.popup__text--address`).textContent = flatElement.offer.address;
     newCloneInfo.querySelector(`.popup__text--price`).textContent = flatElement.offer.price + ` ₽/ночь`;
@@ -37,11 +38,16 @@
     newCloneInfo.querySelector(`.popup__avatar`).setAttribute(`src`, flatElement.author.avatar);
     return newCloneInfo;
   };
-  window.getClone = function (getId, getElement) {
-    let templateCard = document.querySelector(getId).content;
-    let element = templateCard.querySelector(getElement);
+  const getClone = function (data) {
+    let templateCard = document.querySelector(`#card`).content;
+    let element = templateCard.querySelector(`article`);
     let cloneElement = element.cloneNode(true);
-    newCloneElement = addInfo(cloneElement);
+    newCloneElement = addInfo(cloneElement,data);
     mapContainer.appendChild(newCloneElement);
   };
+  window.cards = {
+    getClone: getClone,
+    addInfo: addInfo,
+    flatElement: flatElement
+  }
 })();

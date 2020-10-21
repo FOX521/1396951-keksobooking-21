@@ -4,6 +4,7 @@
   let error = `#error`;
   let element = `div`;
   let cloneBanner;
+
   form.addEventListener(`submit`, function (evt) {
     evt.preventDefault();
     let formData = new FormData(window.form);
@@ -11,7 +12,6 @@
     xhr.responseType = `json`;
     xhr.open(`POST`, `https://21.javascript.pages.academy/keksobooking`);
     xhr.send(formData);
-    window.disabledMap();
     xhr.addEventListener(`load`, function () {
       switch (xhr.status) {
         case 200:
@@ -25,21 +25,25 @@
           break;
       }
     });
+    window.disabledMap();
   });
+
   const getCloneBanner = function (getId, getElement) {
     let templateBanner = document.querySelector(getId).content;
     let elementBanner = templateBanner.querySelector(getElement);
     cloneBanner = elementBanner.cloneNode(true);
-    window.form.appendChild(cloneBanner);
+    form.appendChild(cloneBanner);
     if (getId === error) {
       addListeners(error);
     } else if (getId === success) {
       addListeners(success);
     }
   };
+
   window.removeClonePin = function () {
     window.makePin.items.forEach((removeElement) => removeElement.remove());
   };
+
   const addListeners = function (typeMessage) {
     if (typeMessage === error) {
       let buttonAgain = document.querySelector(`.error__button`);
@@ -62,6 +66,7 @@
     window.removeClonePin();
     window.validateForm.clearForm();
   };
+
   const removePopup = function (removeElement) {
     removeElement.remove();
   };

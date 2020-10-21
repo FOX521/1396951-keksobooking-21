@@ -18,10 +18,10 @@
     objectItem.setAttribute(`data-index`, index);
     return objectItem;
   };
-  let makeOffer = function () {
+  let makeOffer = function (dataArray) {
     for (let i = 0; i < 5; i++) {
       index = i;
-      items[i] = createObj(dataOffer[i]);
+      items[i] = createObj(dataArray[i]);
       mapContainer.appendChild(items[i]);
     }
   };

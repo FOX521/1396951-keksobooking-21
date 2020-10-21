@@ -11,10 +11,12 @@
   let countGuests = Window.activeMap.adForm.querySelector(`#capacity`);
   let chooseRoom = Number(roomNumber.value);
   let chooseGuests = Number(countGuests.value);
+
   resetForm.addEventListener(`click`, function (evt) {
     evt.preventDefault();
     clearForm();
   });
+
   titleForm.addEventListener(`input`, function () {
     let valueLength = titleForm.value.length;
     if (valueLength < MIN_TITLE_LENGTH) {
@@ -26,9 +28,11 @@
     }
     titleForm.reportValidity();
   });
+
   const setAdress = function (coords) {
     addersForm.setAttribute(`value`, `Координаты вертикально ${coords.resultTop}px Координаты горизонта ${coords.resultLeft}px`);
   };
+
   addersForm.addEventListener(`input`, function () {
     let valueLength = addersForm.value.length;
     if (valueLength < MIN_ADDRES_LENGTH) {
@@ -40,27 +44,32 @@
     }
     addersForm.reportValidity();
   });
+
   roomNumber.addEventListener(`input`, function (evt) {
     evt.stopPropagation();
     chooseRoom = Number(evt.target.value);
     compare();
     roomNumber.reportValidity();
   });
+
   countGuests.addEventListener(`input`, function (evt) {
     evt.stopPropagation();
     chooseGuests = Number(evt.target.value);
     compare();
     countGuests.reportValidity();
   });
+
   const compare = function () {
     roomNumber.setCustomValidity(``);
     if (chooseRoom < chooseGuests) {
       roomNumber.setCustomValidity(`Колличества комнат не совпадает с колличеством гостей. Измените выбор`);
     }
   };
+
   const clearForm = function () {
-    window.form.reset();
+    form.reset();
   };
+
   window.validateForm = {
     setAdress: setAdress,
     clearForm: clearForm
