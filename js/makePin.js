@@ -6,6 +6,7 @@
     element.classList.add(className);
     return element;
   };
+
   const createObj = function (newObject) {
     let objectItem = makeElement(`button`, `map__pin`);
     let picture = makeElement(`img`, `map__pin--img`);
@@ -13,18 +14,21 @@
     picture.setAttribute(`src`, newObject.author.avatar);
     picture.setAttribute(`width`, `40`);
     picture.setAttribute(`height`, `40`);
+    picture.setAttribute(`data-index`, window.utill.index);
     objectItem.appendChild(picture);
     objectItem.setAttribute(`style`, `left:${newObject.location.x}px; top: ${newObject.location.y}px`);
-    objectItem.setAttribute(`data-index`, index);
+    objectItem.setAttribute(`data-index`, window.utill.index);
     return objectItem;
   };
+
   let makeOffer = function (dataArray) {
     for (let i = 0; i < 5; i++) {
-      index = i;
+      window.utill.index = i;
       items[i] = createObj(dataArray[i]);
-      mapContainer.appendChild(items[i]);
+      window.utill.mapContainer.appendChild(items[i]);
     }
   };
+
   window.makePin = {
     makeOffer: makeOffer,
     makeElement: makeElement,

@@ -1,16 +1,56 @@
 'use strict';
 (function () {
-  const MIN_TITLE_LENGTH = 10;
-  const MAX_TITLE_LENGTH = 50;
+  const MIN_TITLE_LENGTH = 30;
+  const MAX_TITLE_LENGTH = 100;
   const MIN_ADDRES_LENGTH = 5;
-  const MAX_ADDRES_LENGTH = 20;
+  const MAX_ADDRES_LENGTH = 30;
+  const MAX_PRICE = 1000001;
   let resetForm = document.querySelector(`.ad-form__reset`);
-  let titleForm = Window.activeMap.adForm.querySelector(`#title`);
-  let addersForm = Window.activeMap.adForm.querySelector(`#address`);
-  let roomNumber = Window.activeMap.adForm.querySelector(`#room_number`);
-  let countGuests = Window.activeMap.adForm.querySelector(`#capacity`);
+  let titleForm = window.activeMap.adForm.querySelector(`#title`);
+  let addersForm = window.activeMap.adForm.querySelector(`#address`);
+  let roomNumber = window.activeMap.adForm.querySelector(`#room_number`);
+  let countGuests = window.activeMap.adForm.querySelector(`#capacity`);
+  let inputTypeHouse = window.activeMap.adForm.querySelector(`#type`);
+  let inputPriceHouse = window.activeMap.adForm.querySelector(`#price`);
+  let inputTimeIn = window.activeMap.adForm.querySelector(`#timein`);
+  let inputTimeOut = window.activeMap.adForm.querySelector(`#timeout`);
   let chooseRoom = Number(roomNumber.value);
   let chooseGuests = Number(countGuests.value);
+
+  const changePriceHouse = function (evt) {
+    evt.stopPropagation();
+      let valueInput = evt.target.value;
+      switch (valueInput) {
+        case `bungalow`:
+          inputPriceHouse.setAttribute(`placeholder`, `0`);
+        break;
+        case `flat`:
+          inputPriceHouse.setAttribute(`placeholder`, `1000`);
+        break;
+        case `house`:
+          inputPriceHouse.setAttribute(`placeholder`, `5000`);
+        break;
+        case `palace`:
+          inputPriceHouse.setAttribute(`placeholder`, `10 000`);
+        break;
+      };
+  };
+
+  inputTypeHouse.addEventListener(`input`, changePriceHouse.bind());
+
+  inputPriceHouse.addEventListener(`input`, function (evt ) {
+    evt.stopPropagation();
+    let valueInput = evt.target.value;
+    console.log(valueInput)
+    if (valueInput >= MAX_PRICE) {
+      inputPriceHouse.setCustomValidity(`Превышена максимальная стоимость!`);
+    }
+    inputPriceHouse.reportValidity();
+  });
+
+  const clearForm = function () {
+    window.utill.form.reset();
+  };
 
   resetForm.addEventListener(`click`, function (evt) {
     evt.preventDefault();
@@ -30,7 +70,7 @@
   });
 
   const setAdress = function (coords) {
-    addersForm.setAttribute(`value`, `Координаты вертикально ${coords.resultTop}px Координаты горизонта ${coords.resultLeft}px`);
+    addersForm.setAttribute(`value`, `Top: ${coords.resultTop}px Left: ${coords.resultLeft}px`);
   };
 
   addersForm.addEventListener(`input`, function () {
@@ -64,10 +104,6 @@
     if (chooseRoom < chooseGuests) {
       roomNumber.setCustomValidity(`Колличества комнат не совпадает с колличеством гостей. Измените выбор`);
     }
-  };
-
-  const clearForm = function () {
-    form.reset();
   };
 
   window.validateForm = {

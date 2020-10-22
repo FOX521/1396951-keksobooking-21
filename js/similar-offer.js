@@ -14,16 +14,16 @@
   const getRank = function () {
     let rank = 0;
 
-    if (dataOffer.type === typeHouse) {
+    if (window.dataOffer.type === typeHouse) {
       rank += 4;
     }
-    if (dataOffer.rooms === countRooms) {
+    if (window.dataOffer.rooms === countRooms) {
       rank += 3;
     }
-    if (dataOffer.guests === countGuests) {
+    if (window.dataOffer.guests === countGuests) {
       rank += 2;
     }
-    if (dataOffer.price === priceHouse) {
+    if (window.dataOffer.price === priceHouse) {
       rank += 1;
     }
     console.log(rank);
@@ -31,14 +31,14 @@
 
   const getSortOffer = function () {
     let sortOffer = [];
-    sortOffer =  window.dataOffer;
+    sortOffer = window.dataOffer;
     sortOffer.sort(function (a, b) {
       let rankDiff = getRank(b) - getRank(a);
       return rankDiff;
     });
     console.log(sortOffer)
     window.makePin.makeOffer(sortOffer);
-  
+
   };
 
 

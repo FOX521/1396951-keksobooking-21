@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-  let buttonPin = mapContainer.querySelector(`button`);
+  let buttonPin = window.utill.mapContainer.querySelector(`button`);
   buttonPin.addEventListener(`mousedown`, function (evt) {
     evt.preventDefault();
     let resultTop = buttonPin.offsetTop;
@@ -9,6 +9,7 @@
       x: evt.clientX,
       y: evt.clientY
     };
+
     const onMouseMove = function (moveEvt) {
       moveEvt.preventDefault();
       let shift = {
@@ -21,7 +22,7 @@
       };
       resultTop = Math.floor(buttonPin.offsetTop - shift.y);
       resultLeft = Math.floor(buttonPin.offsetLeft - shift.x);
-      if (!(resultTop < 130 || resultTop > 680)) {
+      if (!(resultTop < 130 || resultTop > 630)) {
         buttonPin.style.top = resultTop + `px`;
       }
       buttonPin.style.left = resultLeft + `px`;
@@ -30,16 +31,18 @@
         resultLeft
       });
     };
+
     const onMouseUp = function (upEvt) {
       upEvt.preventDefault();
       window.validateForm.setAdress({
         resultTop,
         resultLeft
       });
-      mapContainer.removeEventListener(`mousemove`, onMouseMove);
-      mapContainer.removeEventListener(`mouseup`, onMouseUp);
+      window.utill.mapContainer.removeEventListener(`mousemove`, onMouseMove);
+      window.utill.mapContainer.removeEventListener(`mouseup`, onMouseUp);
     };
-    mapContainer.addEventListener(`mousemove`, onMouseMove);
-    mapContainer.addEventListener(`mouseup`, onMouseUp);
+    
+    window.utill.mapContainer.addEventListener(`mousemove`, onMouseMove);
+    window.utill.mapContainer.addEventListener(`mouseup`, onMouseUp);
   });
 })();
