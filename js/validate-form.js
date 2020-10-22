@@ -4,7 +4,7 @@
   const MAX_TITLE_LENGTH = 100;
   const MIN_ADDRES_LENGTH = 5;
   const MAX_ADDRES_LENGTH = 30;
-  const MAX_PRICE = 1000001;
+  const MAX_PRICE = 1000000;
   let resetForm = document.querySelector(`.ad-form__reset`);
   let titleForm = window.activeMap.adForm.querySelector(`#title`);
   let addersForm = window.activeMap.adForm.querySelector(`#address`);
@@ -12,8 +12,6 @@
   let countGuests = window.activeMap.adForm.querySelector(`#capacity`);
   let inputTypeHouse = window.activeMap.adForm.querySelector(`#type`);
   let inputPriceHouse = window.activeMap.adForm.querySelector(`#price`);
-  let inputTimeIn = window.activeMap.adForm.querySelector(`#timein`);
-  let inputTimeOut = window.activeMap.adForm.querySelector(`#timeout`);
   let chooseRoom = Number(roomNumber.value);
   let chooseGuests = Number(countGuests.value);
 
@@ -38,7 +36,7 @@
 
   inputTypeHouse.addEventListener(`input`, changePriceHouse.bind());
 
-  inputPriceHouse.addEventListener(`input`, function (evt ) {
+  inputPriceHouse.addEventListener(`input`, function (evt) {
     evt.stopPropagation();
     let valueInput = evt.target.value;
     console.log(valueInput)
@@ -70,7 +68,7 @@
   });
 
   const setAdress = function (coords) {
-    addersForm.setAttribute(`value`, `Top: ${coords.resultTop}px Left: ${coords.resultLeft}px`);
+    addersForm.setAttribute(`value`, `${coords.resultLeft}px расстояние до острого конца по горизонтали, ${coords.resultTop}px расстояние до острого конца по вертикали`);
   };
 
   addersForm.addEventListener(`input`, function () {

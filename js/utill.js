@@ -1,4 +1,5 @@
 'use strict';
+(function () {
   let form = document.querySelector(`.ad-form`);
   let mapContainer = document.querySelector(`.map__pins`);
   let index;
@@ -15,7 +16,6 @@
     const randomIndex = getRandomInteger(0, maxIndex);
     return list[randomIndex];
 
-
   };
    window.utill = {
     form: form,
@@ -25,4 +25,4 @@
     getRandomInteger: getRandomInteger,
     getRandomItem: getRandomItem
   }
-
+})()
