@@ -1,44 +1,42 @@
 'use strict';
 (function () {
-  let inputTypeHouse = document.querySelector(`#housing-type`);
-  let inputPriceHouse = document.querySelector(`#housing-price`) ;
-  let inputCountRooms = document.querySelector(`#housing-rooms`);
-  let inputCountGuests = document.querySelector(`#housing-guests`);
+  let inputTypeHouse = `housing-type`;
+  let inputPriceHouse = `housing-price`;
+  let inputCountRooms = `housing-rooms`;
+  let inputCountGuests = `housing-guests`;
   let mapFilters = document.querySelector(`.map__filters`);
   let countGuests;
   let countRooms;
   let typeHouse;
   let priceHouse;
-  let sortOffer =  window.dataOffer;
 
-  const getRank = function () {
-    let rank = 0;
 
-    if (window.dataOffer.type === typeHouse) {
-      rank += 4;
+  const getRank = function (offer) {
+    let rank = 1;
+
+    if (typeHouse && typeHouse !== 'any') {
+      rank = offer.offer.type === typeHouse ? rank * 2 : 0;
     }
-    if (window.dataOffer.rooms === countRooms) {
-      rank += 3;
+    if (countRooms && countRooms !== 'any') {
+      rank = offer.offer.rooms === Number(countRooms) ? rank * 2 : 0;
     }
-    if (window.dataOffer.guests === countGuests) {
-      rank += 2;
+    if (countGuests && countGuests !== 'any') {
+      rank = offer.offer.guests === countGuests ? rank * 2 : 0;
     }
-    if (window.dataOffer.price === priceHouse) {
-      rank += 1;
+    if (priceHouse && priceHouse !== 'any') {
+      rank = offer.offer.price === priceHouse ? rank * 2 : 0;
     }
-    console.log(rank);
+    return rank;
   };
 
   const getSortOffer = function () {
-    let sortOffer = [];
-    sortOffer = window.dataOffer;
-    sortOffer.sort(function (a, b) {
-      let rankDiff = getRank(b) - getRank(a);
-      return rankDiff;
-    });
-    console.log(sortOffer)
+    window.upload.removeClonePin();
+    window.cards.closeCards();
+    window.sortOffer = [];
+    window.sortOffer = window.DATA_OFFER.filter((el) => getRank(el) > 0);
+    console.log(sortOffer);
     window.makePin.makeOffer(sortOffer);
-
+    window.cards.getClone(sortOffer);
   };
 
 
@@ -47,17 +45,17 @@
     evt.stopPropagation();
     let classNameInput = evt.target.id;
     switch (classNameInput) {
-      case `housing-type`:
+      case inputTypeHouse:
         typeHouse = evt.target.value;
       break;
-      case `housing-price`:
+      case inputPriceHouse:
         priceHouse = evt.target.value;
       break;
-      case `housing-rooms`:
-        countRooms = evt.target.value;
+      case inputCountRooms:
+        countRooms = Number(evt.target.value);
       break;
-      case `housing-guests`:
-        countGuests = evt.target.value;
+      case inputCountGuests:
+        countGuests = Number(evt.target.value);
       break;
       default:
     }

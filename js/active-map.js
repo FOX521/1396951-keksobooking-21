@@ -41,7 +41,6 @@
   const activeMap = function () {
     mainMap.classList.remove(`map--faded`);
     adForm.classList.remove(`ad-form--disabled`);
-    inputCoords.setAttribute(`disabled`, `disabled`);
     for (let i = 0; i < fieldsetForm.length; i++) {
       fieldsetForm[i].removeAttribute(`disabled`);
     }
@@ -51,7 +50,7 @@
     for (let i = 0; i < fieldsetMapFilters.length; i++) {
       fieldsetMapFilters[i].removeAttribute(`disabled`);
     }
-    window.makePin.makeOffer(window.dataOffer);
+    window.makePin.makeOffer(window.DATA_OFFER);
   };
 
 

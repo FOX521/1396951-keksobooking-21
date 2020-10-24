@@ -11,7 +11,8 @@
     switch (xhr.status) {
       case 200:
         onSucces(xhr.response);
-        window.dataOffer = JSON.parse(xhr.responseText);
+        window.DATA_OFFER = JSON.parse(xhr.responseText);
+        window.sortOffer = DATA_OFFER;
         break;
       case 400:
         error = `Неверный запрос`;

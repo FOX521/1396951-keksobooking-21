@@ -22,7 +22,8 @@
   };
 
   let makeOffer = function (dataArray) {
-    for (let i = 0; i < 5; i++) {
+    const maxCount = dataArray.length >= 5 ? 5 : dataArray.length;
+    for (let i = 0; i < maxCount; i++) {
       window.utill.index = i;
       items[i] = createObj(dataArray[i]);
       window.utill.mapContainer.appendChild(items[i]);

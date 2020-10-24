@@ -14,7 +14,9 @@
     if (evt.target.className === `map__pin` || evt.target.className === `map__pin--img`) {
       window.utill.index = Number(evt.target.getAttribute(`data-index`));
       closeCards();
-      getClone(window.dataOffer);
+      if (window.sortOffer) {
+        getClone(window.sortOffer);
+      }
     } else if (evt.target.className === POPUP_CLOSE) {
       popup = evt.target.closest(`.popup`);
       popup.remove();
@@ -41,12 +43,13 @@
     let templateCard = document.querySelector(`#card`).content;
     let element = templateCard.querySelector(`article`);
     let cloneElement = element.cloneNode(true);
-    newCloneElement = addInfo(cloneElement,data);
+    newCloneElement = addInfo(cloneElement, data);
     window.utill.mapContainer.appendChild(newCloneElement);
   };
   window.cards = {
     getClone: getClone,
     addInfo: addInfo,
-    flatElement: flatElement
+    flatElement: flatElement,
+    closeCards: closeCards
   }
 })();
