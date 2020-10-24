@@ -4,11 +4,18 @@
   let inputPriceHouse = `housing-price`;
   let inputCountRooms = `housing-rooms`;
   let inputCountGuests = `housing-guests`;
+  let checkboxWifi = `filter-wifi`;
+  let checkboxDish = `filter-dishwasher`;
+  let checkboxParking = `filter-parking`;
+  let checkboxWasher = `filter-washer`;
+  let checkboxElevator =`filter-elevator`;
+  let checkboxCondi =`filter-conditioner`;
   let mapFilters = document.querySelector(`.map__filters`);
   let countGuests;
   let countRooms;
   let typeHouse;
   let priceHouse;
+  let isfeatures = [];
 
   const comparePrice = function (compareValue) {
     if (compareValue < 10000) {
@@ -66,8 +73,27 @@
       case inputCountGuests:
         countGuests = Number(evt.target.value);
       break;
-      default:
+      case checkboxWifi:
+        isfeatures.push(evt.target.value);
+      break;
+      case checkboxDish:
+        isfeatures.push(evt.target.value);
+      break;
+      case checkboxWasher:
+        isfeatures.push(evt.target.value);
+      break;
+      case checkboxElevator:
+        isfeatures.push(evt.target.value);
+      break;
+      case checkboxCondi:
+        isfeatures.push(evt.target.value);
+      break;
+      case checkboxParking:
+        isfeatures.push(evt.target.value);
+      break;
+
     }
     getSortOffer();
+    console.log(isfeatures)
   });
 })();

@@ -12,8 +12,20 @@
   let countGuests = window.activeMap.adForm.querySelector(`#capacity`);
   let inputTypeHouse = window.activeMap.adForm.querySelector(`#type`);
   let inputPriceHouse = window.activeMap.adForm.querySelector(`#price`);
+  let inputTimeIn = window.activeMap.adForm.querySelector(`#timein`);
+  let inputTimeOut = window.activeMap.adForm.querySelector(`#timeout`);
   let chooseRoom = Number(roomNumber.value);
   let chooseGuests = Number(countGuests.value);
+
+  inputTimeIn.addEventListener('change', function() {
+    let selected = this.value;
+    inputTimeOut.value = selected;
+  });
+
+  inputTimeOut.addEventListener('change', function() {
+    let selected = this.value;
+    inputTimeIn.value = selected;
+  })
 
   const changePriceHouse = function (evt) {
     evt.stopPropagation();
