@@ -47,13 +47,14 @@
   };
 
   const getSortOffer = function () {
-    window.upload.removeClonePin();
-    window.cards.closeCards();
     window.sortOffer = [];
     window.sortOffer = window.DATA_OFFER.filter((el) => getRank(el) > 0);
+    window.upload.removeClonePin();
+    window.cards.closeCards();
     console.log(sortOffer);
     window.makePin.makeOffer(sortOffer);
     window.cards.getClone(sortOffer);
+    window.cards.closeCards();
   };
 
   mapFilters.addEventListener(`change`, function (evt) {
