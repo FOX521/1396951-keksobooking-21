@@ -10,6 +10,15 @@
     bungalow: `Бунгало`,
     palace: `Дворец`
   };
+
+  // const featuresTOflat = {
+  //   wifi: wifi,
+  //   dishwasher: dishwasher,
+  //   parking: parking,
+  //   washer: parking,
+  //   elevator: elevator,
+  //   conditioner: conditioner
+  // }
   window.utill.mapContainer.addEventListener(`click`, function (evt) {
     if (evt.target.className === `map__pin` || evt.target.className === `map__pin--img`) {
       window.utill.index = Number(evt.target.getAttribute(`data-index`));

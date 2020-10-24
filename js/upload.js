@@ -26,6 +26,8 @@
       }
     });
     window.activeMap.disabledMap();
+    window.upload.removeClonePin();
+    window.cards.closeCards();
   });
 
   const getCloneBanner = function (getId, getElement) {

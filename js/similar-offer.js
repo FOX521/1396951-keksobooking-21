@@ -10,6 +10,16 @@
   let typeHouse;
   let priceHouse;
 
+  const comparePrice = function (compareValue) {
+    if (compareValue < 10000) {
+      return `low`;
+    }
+    if (compareValue >= 10000 && compareValue <= 50000 ) {
+      return `middle`;
+    }if (compareValue > 50000) {
+      return `high`;
+    }
+  }
 
   const getRank = function (offer) {
     let rank = 1;
@@ -24,7 +34,7 @@
       rank = offer.offer.guests === countGuests ? rank * 2 : 0;
     }
     if (priceHouse && priceHouse !== 'any') {
-      rank = offer.offer.price === priceHouse ? rank * 2 : 0;
+      rank = comparePrice(offer.offer.price) === priceHouse ? rank * 2 : 0;
     }
     return rank;
   };
@@ -38,7 +48,6 @@
     window.makePin.makeOffer(sortOffer);
     window.cards.getClone(sortOffer);
   };
-
 
   mapFilters.addEventListener(`change`, function (evt) {
     evt.preventDefault();
