@@ -50,7 +50,6 @@
     newCloneInfo.querySelector(`.popup__type`).textContent = typeTOFlat[flatElement.offer.type];
     newCloneInfo.querySelector(`.popup__text--capacity`).textContent = flatElement.offer.rooms + ` комнаты для ` + flatElement.offer.guests + ` гостей`;
     newCloneInfo.querySelector(`.popup__text--time`).textContent = `Заезд после ` + flatElement.offer.checkin + ` , выезд до ` + flatElement.offer.checkout;
-    newCloneInfo.querySelector(`.popup__features`).textContent = flatElement.offer.features;
     newCloneInfo.querySelector(`.popup__description`).textContent = flatElement.offer.description;
     newCloneInfo.querySelector(`.popup__avatar`).setAttribute(`src`, flatElement.author.avatar);
     newCloneInfo.querySelector(`.popup__photo`).remove();

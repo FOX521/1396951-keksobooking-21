@@ -35,7 +35,6 @@
   mapPinMain.addEventListener(`keydown`, function choiseEnt (evt) {
     if (evt.keyCode === 13) {
       mapPinMain.removeEventListener(`keydown`, choiseEnt);
-      mapPinMain.removeEventListener(`click`, handler);
     }
   });
 
