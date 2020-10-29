@@ -5,6 +5,7 @@
     console.log(error);
   };
   const onSucces = function (animals) {
+    
   };
   xhr.addEventListener(`load`, function () {
     let error;

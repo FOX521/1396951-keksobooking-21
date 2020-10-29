@@ -92,7 +92,6 @@
       case checkboxParking:
         isfeatures.push(evt.target.value);
       break;
-
     }
     getSortOffer();
     console.log(isfeatures)
