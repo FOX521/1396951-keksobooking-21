@@ -76,5 +76,5 @@
     addInfo: addInfo,
     flatElement: flatElement,
     closeCards: closeCards
-  }
+  };
 })();

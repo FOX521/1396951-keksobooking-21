@@ -62,7 +62,7 @@
   const addListeners = function (typeMessage) {
     if (typeMessage === error) {
       let buttonAgain = document.querySelector(`.error__button`);
-      buttonAgain.addEventListener(`click`, function removePopup (evt) {
+      buttonAgain.addEventListener(`click`, function removePopup(evt) {
         evt.preventDefault();
         removePopup(cloneBanner);
       });
@@ -81,5 +81,5 @@
 
   window.upload = {
     removeClonePin: removeClonePin
-  }
+  };
 })();

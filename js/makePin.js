@@ -34,7 +34,6 @@
   window.makePin = {
     makeElement: makeElement,
     makeOffer: makeOffer,
-    makeElement: makeElement,
     items: items
   };
 })();

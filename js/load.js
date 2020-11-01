@@ -13,7 +13,7 @@
       case 200:
         onSucces(xhr.response);
         window.DATA_OFFER = JSON.parse(xhr.responseText);
-        window.sortOffer = DATA_OFFER;
+        window.sortOffer = window.DATA_OFFER;
         break;
       case 400:
         error = `Неверный запрос`;
