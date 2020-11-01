@@ -72,9 +72,9 @@
     window.utill.mapContainer.appendChild(newCloneElement);
   };
   window.cards = {
-    getClone: getClone,
-    addInfo: addInfo,
-    flatElement: flatElement,
-    closeCards: closeCards
+    getClone,
+    addInfo,
+    flatElement,
+    closeCards
   };
 })();

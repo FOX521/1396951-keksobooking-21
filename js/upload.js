@@ -80,6 +80,6 @@
   };
 
   window.upload = {
-    removeClonePin: removeClonePin
+    removeClonePin
   };
 })();

@@ -54,7 +54,7 @@
 
 
   window.activeMap = {
-    adForm: adForm,
-    disabledMap: disabledMap
+    adForm,
+    disabledMap
   };
 })();

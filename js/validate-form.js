@@ -116,7 +116,7 @@
   };
 
   window.validateForm = {
-    setAdress: setAdress,
-    clearForm: clearForm
+    setAdress,
+    clearForm
   };
 })();

@@ -32,8 +32,8 @@
   };
 
   window.makePin = {
-    makeElement: makeElement,
-    makeOffer: makeOffer,
-    items: items
+    makeElement,
+    makeOffer,
+    items
   };
 })();

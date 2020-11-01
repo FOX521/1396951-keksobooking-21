@@ -15,7 +15,14 @@
   let countRooms;
   let typeHouse;
   let priceHouse;
-  let isfeatures = [];
+  let isfeatures = {
+    isWifi: false,
+    isDish: false,
+    isWasher: false,
+    isElevator: false,
+    isCondi: false,
+    isParking: false
+  };
 
   const comparePrice = function (compareValue) {
     if (compareValue < 10000) {
@@ -45,12 +52,39 @@
     if (priceHouse && priceHouse !== `any`) {
       rank = comparePrice(offer.offer.price) === priceHouse ? rank * 2 : 0;
     }
+    if (isfeatures.isWifi) {
+      rank = offer.offer.features.includes(`wifi`) ? rank * 2 : 0;
+    }
+    if (isfeatures.isDish) {
+      rank = offer.offer.features.includes(`dishwasher`) ? rank * 2 : 0;
+    }
+    if (isfeatures.isWasher) {
+      rank = offer.offer.features.includes(`washer`) ? rank * 2 : 0;
+    }
+    if (isfeatures.isElevator) {
+      rank = offer.offer.features.includes(`elevator`) ? rank * 2 : 0;
+    }
+    if (isfeatures.isCondi) {
+      rank = offer.offer.features.includes(`conditioner`) ? rank * 2 : 0;
+    }
+    if (isfeatures.isParking) {
+      rank = offer.offer.features.includes(`parking`) ? rank * 2 : 0;
+    }
+
     return rank;
   };
 
-  const getSortOffer = function () {
-    window.sortOffer = [];
-    window.sortOffer = window.DATA_OFFER.filter((el) => getRank(el) > 0);
+  function debounce(cb) {
+    let count = false;
+    return function (evt) {
+      if (count) {
+        clearTimeout(count);
+      }
+      count = setTimeout(cb.bind(this, evt), 1000);
+    };
+  }
+
+  const makeNewElements = function () {
     window.upload.removeClonePin();
     window.cards.closeCards();
     window.makePin.makeOffer(window.sortOffer);
@@ -58,7 +92,13 @@
     window.cards.closeCards();
   };
 
-  mapFilters.addEventListener(`change`, function (evt) {
+  const getSortOffer = function () {
+    window.sortOffer = [];
+    window.sortOffer = window.DATA_OFFER.filter((el) => getRank(el) > 0);
+    makeNewElements();
+  };
+
+  mapFilters.addEventListener(`change`, debounce(function (evt) {
     evt.preventDefault();
     evt.stopPropagation();
     let classNameInput = evt.target.id;
@@ -76,24 +116,24 @@
         countGuests = Number(evt.target.value);
         break;
       case checkboxWifi:
-        isfeatures.push(evt.target.value);
+        isfeatures.isWifi = evt.target.checked;
         break;
       case checkboxDish:
-        isfeatures.push(evt.target.value);
+        isfeatures.isDish = evt.target.checked;
         break;
       case checkboxWasher:
-        isfeatures.push(evt.target.value);
+        isfeatures.isWasher = evt.target.checked;
         break;
       case checkboxElevator:
-        isfeatures.push(evt.target.value);
+        isfeatures.isElevator = evt.target.checked;
         break;
       case checkboxCondi:
-        isfeatures.push(evt.target.value);
+        isfeatures.isCondi = evt.target.checked;
         break;
       case checkboxParking:
-        isfeatures.push(evt.target.value);
+        isfeatures.isParking = evt.target.checked;
         break;
     }
     getSortOffer();
-  });
+  }));
 })();
