@@ -52,7 +52,19 @@
     newCloneInfo.querySelector(`.popup__text--time`).textContent = `Заезд после ` + flatElement.offer.checkin + ` , выезд до ` + flatElement.offer.checkout;
     newCloneInfo.querySelector(`.popup__description`).textContent = flatElement.offer.description;
     newCloneInfo.querySelector(`.popup__avatar`).setAttribute(`src`, flatElement.author.avatar);
+    newCloneInfo.querySelector(`.popup__features`).textContent = ``;
+
+    for (let i = 0; i < flatElement.offer.features.length; i++) {
+      let imgFeatures = flatElement.offer.features[i];
+      let elrmentFeatures = window.makePin.makeElement(`li`, `popup__feature`);
+      elrmentFeatures.setAttribute(`width`, `20`);
+      elrmentFeatures.setAttribute(`height`, `20`);
+      elrmentFeatures.classList.add(`popup__feature` + `--` + `${imgFeatures}`);
+      newCloneInfo.querySelector(`.popup__features`).appendChild(elrmentFeatures);
+    }
+
     newCloneInfo.querySelector(`.popup__photo`).remove();
+    
     for (let i = 0; i < flatElement.offer.photos.length; i++) {
       let photoValue;
       let photoItem = window.makePin.makeElement(`img`, `popup__photo`);
