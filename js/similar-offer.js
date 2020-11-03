@@ -1,5 +1,6 @@
 'use strict';
 (function () {
+  let mapFilters = document.querySelector(`.map__filters`);
   let inputTypeHouse = `housing-type`;
   let inputPriceHouse = `housing-price`;
   let inputCountRooms = `housing-rooms`;
@@ -10,71 +11,72 @@
   let checkboxWasher = `filter-washer`;
   let checkboxElevator = `filter-elevator`;
   let checkboxCondi = `filter-conditioner`;
-  let mapFilters = document.querySelector(`.map__filters`);
+  let lowPrice = 10000;
+  let middlePrice = 50000;
   let countGuests;
   let countRooms;
   let typeHouse;
   let priceHouse;
-  let isfeatures = {
+
+  let isFeatures = {
     isWifi: false,
     isDish: false,
     isWasher: false,
     isElevator: false,
-    isCondi: false,
+    isCondicioner: false,
     isParking: false
   };
 
   const comparePrice = function (compareValue) {
-    if (compareValue < 10000) {
+    if (compareValue < lowPrice) {
       return `low`;
     }
-    if (compareValue >= 10000 && compareValue <= 50000) {
+    if (compareValue >= lowPrice && compareValue <= middlePrice) {
       return `middle`;
     }
-    if (compareValue > 50000) {
+    if (compareValue > middlePrice) {
       return `high`;
     }
     return undefined;
   };
 
-  const getRank = function (offer) {
+  const getRank = function (array) {
     let rank = 1;
 
     if (typeHouse && typeHouse !== `any`) {
-      rank = offer.offer.type === typeHouse ? rank * 2 : 0;
+      rank = array.offer.type === typeHouse ? rank * 2 : 0;
     }
     if (countRooms && countRooms !== `any`) {
-      rank = offer.offer.rooms === Number(countRooms) ? rank * 2 : 0;
+      rank = array.offer.rooms === Number(countRooms) ? rank * 2 : 0;
     }
     if (countGuests && countGuests !== `any`) {
-      rank = offer.offer.guests === countGuests ? rank * 2 : 0;
+      rank = array.offer.guests === countGuests ? rank * 2 : 0;
     }
     if (priceHouse && priceHouse !== `any`) {
-      rank = comparePrice(offer.offer.price) === priceHouse ? rank * 2 : 0;
+      rank = comparePrice(array.offer.price) === priceHouse ? rank * 2 : 0;
     }
-    if (isfeatures.isWifi) {
-      rank = offer.offer.features.includes(`wifi`) ? rank * 2 : 0;
+    if (isFeatures.isWifi) {
+      rank = array.offer.features.includes(`wifi`) ? rank * 2 : 0;
     }
-    if (isfeatures.isDish) {
-      rank = offer.offer.features.includes(`dishwasher`) ? rank * 2 : 0;
+    if (isFeatures.isDish) {
+      rank = array.offer.features.includes(`dishwasher`) ? rank * 2 : 0;
     }
-    if (isfeatures.isWasher) {
-      rank = offer.offer.features.includes(`washer`) ? rank * 2 : 0;
+    if (isFeatures.isWasher) {
+      rank = array.offer.features.includes(`washer`) ? rank * 2 : 0;
     }
-    if (isfeatures.isElevator) {
-      rank = offer.offer.features.includes(`elevator`) ? rank * 2 : 0;
+    if (isFeatures.isElevator) {
+      rank = array.offer.features.includes(`elevator`) ? rank * 2 : 0;
     }
-    if (isfeatures.isCondi) {
-      rank = offer.offer.features.includes(`conditioner`) ? rank * 2 : 0;
+    if (isFeatures.isCondicionercioner) {
+      rank = array.offer.features.includes(`conditioner`) ? rank * 2 : 0;
     }
-    if (isfeatures.isParking) {
-      rank = offer.offer.features.includes(`parking`) ? rank * 2 : 0;
+    if (isFeatures.isParking) {
+      rank = array.offer.features.includes(`parking`) ? rank * 2 : 0;
     }
-
     return rank;
   };
 
-  function debounce(cb) {
+  function doDebounce(cb) {
     let count = false;
     return function (evt) {
       if (count) {
@@ -85,20 +87,24 @@
   }
 
   const makeNewElements = function () {
-    window.upload.removeClonePin();
-    window.cards.closeCards();
-    window.makePin.makeOffer(window.sortOffer);
-    window.cards.getClone(window.sortOffer);
-    window.cards.closeCards();
+    try {
+      window.upload.removeClonePin();
+      window.cards.closeCards();
+      window.makePin.makeOffer(window.sortOffers);
+      window.cards.getClone(window.sortOffers);
+      window.cards.closeCards();
+    } catch (err) {
+
+    }
   };
 
   const getSortOffer = function () {
-    window.sortOffer = [];
-    window.sortOffer = window.DATA_OFFER.filter((el) => getRank(el) > 0);
+    window.sortOffers = [];
+    window.sortOffers = window.DATA_OFFER.filter((el) => getRank(el) > 0);
     makeNewElements();
   };
 
-  mapFilters.addEventListener(`change`, debounce(function (evt) {
+  mapFilters.addEventListener(`change`, doDebounce(function (evt) {
     evt.preventDefault();
     evt.stopPropagation();
     let classNameInput = evt.target.id;
@@ -116,22 +122,22 @@
         countGuests = Number(evt.target.value);
         break;
       case checkboxWifi:
-        isfeatures.isWifi = evt.target.checked;
+        isFeatures.isWifi = evt.target.checked;
         break;
       case checkboxDish:
-        isfeatures.isDish = evt.target.checked;
+        isFeatures.isDish = evt.target.checked;
         break;
       case checkboxWasher:
-        isfeatures.isWasher = evt.target.checked;
+        isFeatures.isWasher = evt.target.checked;
         break;
       case checkboxElevator:
-        isfeatures.isElevator = evt.target.checked;
+        isFeatures.isElevator = evt.target.checked;
         break;
       case checkboxCondi:
-        isfeatures.isCondi = evt.target.checked;
+        isFeatures.isCondicionercioner = evt.target.checked;
         break;
       case checkboxParking:
-        isfeatures.isParking = evt.target.checked;
+        isFeatures.isParking = evt.target.checked;
         break;
     }
     getSortOffer();

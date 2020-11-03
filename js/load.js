@@ -10,18 +10,18 @@
   xhr.addEventListener(`load`, function () {
     let error;
     switch (xhr.status) {
-      case 200:
+      case window.utill.StatusCode.OK:
         onSucces(xhr.response);
         window.DATA_OFFER = JSON.parse(xhr.responseText);
-        window.sortOffer = window.DATA_OFFER;
+        window.sortOffers = window.DATA_OFFER;
         break;
-      case 400:
+      case window.utill.StatusCode.BAD_REQUEST:
         error = `Неверный запрос`;
         break;
-      case 401:
+      case window.utill.StatusCode.NOT_AUTORIZATION:
         error = `Пользователь не авторизован`;
         break;
-      case 404:
+      case window.utill.StatusCode.NOT_FOUND:
         error = `Ничего не найдено`;
         break;
       default:

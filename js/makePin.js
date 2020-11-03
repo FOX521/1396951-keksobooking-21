@@ -1,5 +1,6 @@
 'use strict';
 (function () {
+  const LENGTH_ARRAY = 5;
   let items = [];
   const makeElement = function (tagName, className) {
     let element = document.createElement(tagName);
@@ -23,7 +24,7 @@
   };
 
   let makeOffer = function (dataArray) {
-    const maxCount = dataArray.length >= 5 ? 5 : dataArray.length;
+    const maxCount = dataArray.length >= LENGTH_ARRAY ? LENGTH_ARRAY : dataArray.length;
     for (let i = 0; i < maxCount; i++) {
       window.utill.index = i;
       items[i] = createObj(dataArray[i]);

@@ -1,5 +1,7 @@
 'use strict';
 (function () {
+  const LIMIT_TOP = 130;
+  const LIMIT_BOTTOM = 630;
   let buttonPin = window.utill.mapContainer.querySelector(`.map__pin--main`);
   buttonPin.addEventListener(`mousedown`, function (evt) {
     evt.preventDefault();
@@ -22,7 +24,7 @@
       };
       resultTop = Math.floor(buttonPin.offsetTop - shift.y);
       resultLeft = Math.floor(buttonPin.offsetLeft - shift.x);
-      if (!(resultTop < 130 || resultTop > 630)) {
+      if (!(resultTop < LIMIT_TOP || resultTop > LIMIT_BOTTOM)) {
         buttonPin.style.top = resultTop + `px`;
       }
       buttonPin.style.left = resultLeft + `px`;

@@ -21,19 +21,19 @@
     mainMap.classList.add(`map--faded`);
     adForm.classList.add(`ad-form--disabled`);
 
-    mapPinMain.addEventListener(`click`, function handler(evt) {
-      if (evt.button === 0) {
+    mapPinMain.addEventListener(`click`, function onMapPinMainClick(evt) {
+      if (evt.button === window.utill.CLICK_KEY) {
         activeMap();
-        mapPinMain.removeEventListener(`click`, handler);
+        mapPinMain.removeEventListener(`click`, onMapPinMainClick);
       }
     });
   };
 
   disabledMap();
 
-  mapPinMain.addEventListener(`keydown`, function choiseEnt(evt) {
-    if (evt.keyCode === 13) {
-      mapPinMain.removeEventListener(`keydown`, choiseEnt);
+  mapPinMain.addEventListener(`keydown`, function onMapPinMainKeydown(evt) {
+    if (evt.keyCode === window.utill.ENTER_KEY) {
+      mapPinMain.removeEventListener(`keydown`, onMapPinMainKeydown);
     }
   });
 

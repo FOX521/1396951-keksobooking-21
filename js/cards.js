@@ -12,20 +12,12 @@
     palace: `Дворец`
   };
 
-  // const featuresTOflat = {
-  //   wifi: wifi,
-  //   dishwasher: dishwasher,
-  //   parking: parking,
-  //   washer: parking,
-  //   elevator: elevator,
-  //   conditioner: conditioner
-  // }
   window.utill.mapContainer.addEventListener(`click`, function (evt) {
     if (evt.target.className === `map__pin` || evt.target.className === `map__pin--img`) {
       window.utill.index = Number(evt.target.getAttribute(`data-index`));
       closeCards();
-      if (window.sortOffer) {
-        getClone(window.sortOffer);
+      if (window.sortOffers) {
+        getClone(window.sortOffers);
       }
     } else if (evt.target.className === POPUP_CLOSE) {
       popup = evt.target.closest(`.popup`);
@@ -34,7 +26,7 @@
   });
 
   window.utill.mapContainer.addEventListener(`keydown`, function (evt) {
-    if (evt.keyCode === 27) {
+    if (evt.keyCode === window.utill.ESC_KEY) {
       closeCards();
     }
   });
@@ -64,7 +56,7 @@
     }
 
     newCloneInfo.querySelector(`.popup__photo`).remove();
-    
+
     for (let i = 0; i < flatElement.offer.photos.length; i++) {
       let photoValue;
       let photoItem = window.makePin.makeElement(`img`, `popup__photo`);
