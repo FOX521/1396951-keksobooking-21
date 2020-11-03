@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-  let buttonPin = window.utill.mapContainer.querySelector(`button`);
+  let buttonPin = window.utill.mapContainer.querySelector(`.map__pin--main`);
   buttonPin.addEventListener(`mousedown`, function (evt) {
     evt.preventDefault();
     let resultTop = buttonPin.offsetTop;
@@ -41,7 +41,7 @@
       window.utill.mapContainer.removeEventListener(`mousemove`, onMouseMove);
       window.utill.mapContainer.removeEventListener(`mouseup`, onMouseUp);
     };
-    
+
     window.utill.mapContainer.addEventListener(`mousemove`, onMouseMove);
     window.utill.mapContainer.addEventListener(`mouseup`, onMouseUp);
   });

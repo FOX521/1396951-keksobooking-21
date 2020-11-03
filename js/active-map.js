@@ -7,7 +7,6 @@
   let mapFilters = document.querySelector(`.map__filters`);
   let selectMapFilters = mapFilters.querySelectorAll(`select`);
   let fieldsetMapFilters = mapFilters.querySelectorAll(`fieldset`);
-  let inputCoords = adForm.querySelector(`#address`);
 
   const disabledMap = function () {
     for (let i = 0; i < fieldsetForm.length; i++) {
@@ -22,19 +21,19 @@
     mainMap.classList.add(`map--faded`);
     adForm.classList.add(`ad-form--disabled`);
 
-    mapPinMain.addEventListener(`mousedown`, function handler (evt) {
+    mapPinMain.addEventListener(`click`, function handler(evt) {
       if (evt.button === 0) {
         activeMap();
-        mapPinMain.removeEventListener(`mousedown`, handler);
+        mapPinMain.removeEventListener(`click`, handler);
       }
     });
   };
 
   disabledMap();
 
-  mapPinMain.addEventListener(`keydown`, function (evt) {
+  mapPinMain.addEventListener(`keydown`, function choiseEnt(evt) {
     if (evt.keyCode === 13) {
-      activeMap();
+      mapPinMain.removeEventListener(`keydown`, choiseEnt);
     }
   });
 
@@ -55,7 +54,7 @@
 
 
   window.activeMap = {
-    adForm: adForm,
-    disabledMap: disabledMap
+    adForm,
+    disabledMap
   };
 })();

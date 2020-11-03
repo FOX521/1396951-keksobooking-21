@@ -18,6 +18,7 @@
     objectItem.appendChild(picture);
     objectItem.setAttribute(`style`, `left:${newObject.location.x}px; top: ${newObject.location.y}px`);
     objectItem.setAttribute(`data-index`, window.utill.index);
+    objectItem.tabIndex = window.utill.index;
     return objectItem;
   };
 
@@ -31,8 +32,8 @@
   };
 
   window.makePin = {
-    makeOffer: makeOffer,
-    makeElement: makeElement,
-    items: items
+    makeElement,
+    makeOffer,
+    items
   };
 })();

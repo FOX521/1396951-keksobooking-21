@@ -5,6 +5,7 @@
     console.log(error);
   };
   const onSucces = function (animals) {
+    console.log(animals);
   };
   xhr.addEventListener(`load`, function () {
     let error;
@@ -12,7 +13,7 @@
       case 200:
         onSucces(xhr.response);
         window.DATA_OFFER = JSON.parse(xhr.responseText);
-        window.sortOffer = DATA_OFFER;
+        window.sortOffer = window.DATA_OFFER;
         break;
       case 400:
         error = `Неверный запрос`;

@@ -17,12 +17,12 @@
     return list[randomIndex];
 
   };
-   window.utill = {
-    form: form,
-    mapContainer: mapContainer,
-    index: index,
-    offWidth: offWidth,
-    getRandomInteger: getRandomInteger,
-    getRandomItem: getRandomItem
-  }
-})()
+  window.utill = {
+    form,
+    mapContainer,
+    index,
+    offWidth,
+    getRandomInteger,
+    getRandomItem
+  };
+})();
