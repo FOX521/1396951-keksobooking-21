@@ -1,7 +1,7 @@
 'use strict';
 (function () {
   const onError = function (error) {
-    console.log(alert);
+    console.log(error);
   };
   let xhr = new XMLHttpRequest();
   xhr.addEventListener(`load`, function () {

@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-  const TYPE_FILES = [`jpg` ,`jpeg` ,`svg` ,`png`, `gif`];
+  const TYPE_FILES = [`gif`, `jpg`, `jpeg`, `png`];
   let containerPreview = document.querySelector(`.ad-form-header__preview`);
   let imgAvatar = containerPreview.querySelector(`img`);
   let addedFileAvatar = document.querySelector(`.ad-form-header__input`);
