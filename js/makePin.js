@@ -1,5 +1,4 @@
 'use strict';
-(function () {
   const LENGTH_ARRAY = 5;
   let items = [];
   const makeElement = function (tagName, className) {
@@ -37,4 +36,3 @@
     makeOffer,
     items
   };
-})();

@@ -1,5 +1,4 @@
 'use strict';
-(function () {
   let adForm = document.querySelector(`.ad-form`);
   let fieldsetForm = adForm.querySelectorAll(`fieldset`);
   let mainMap = document.querySelector(`.map`);
@@ -57,4 +56,3 @@
     adForm,
     disabledMap
   };
-})();

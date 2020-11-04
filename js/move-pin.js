@@ -1,5 +1,4 @@
 'use strict';
-(function () {
   const LIMIT_TOP = 130;
   const LIMIT_BOTTOM = 630;
   let buttonPin = window.utill.mapContainer.querySelector(`.map__pin--main`);
@@ -47,4 +46,3 @@
     window.utill.mapContainer.addEventListener(`mousemove`, onMouseMove);
     window.utill.mapContainer.addEventListener(`mouseup`, onMouseUp);
   });
-})();

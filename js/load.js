@@ -1,5 +1,4 @@
 'use strict';
-(function () {
   const onError = function (error) {
     console.log(error);
   };
@@ -36,4 +35,3 @@
   xhr.timeout = 5000;
   xhr.open(`GET`, `https://21.javascript.pages.academy/keksobooking/data`);
   xhr.send();
-})();

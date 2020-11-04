@@ -1,5 +1,4 @@
 'use strict';
-(function () {
   const CLICK_KEY = 0;
   const ENTER_KEY = 13;
   const ESC_KEY = 27;
@@ -39,4 +38,3 @@
     getRandomItem,
     StatusCode
   };
-})();
