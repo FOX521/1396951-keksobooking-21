@@ -14,13 +14,13 @@
     xhr.send(formData);
     xhr.addEventListener(`load`, function () {
       switch (xhr.status) {
-        case 200:
+        case window.utill.StatusCode.OK:
           getCloneBanner(success, element);
           break;
-        case 400:
+        case window.utill.StatusCode.BAD_REQUEST:
           getCloneBanner(error, element);
           break;
-        case 500:
+        case window.utill.StatusCode.NOT_AVILABLE:
           getCloneBanner(error, element);
           break;
       }
@@ -48,7 +48,7 @@
 
   const closePopup = function () {
     document.addEventListener(`keydown`, function (evt) {
-      if (evt.keyCode === 27 || evt.keyCode === 13) {
+      if (evt.keyCode === window.utill.ESC_KEY || evt.keyCode === window.utill.ENTER_KEY) {
         evt.preventDefault();
         removePopup(cloneBanner);
       }
@@ -62,7 +62,7 @@
   const addListeners = function (typeMessage) {
     if (typeMessage === error) {
       let buttonAgain = document.querySelector(`.error__button`);
-      buttonAgain.addEventListener(`click`, function removePopup (evt) {
+      buttonAgain.addEventListener(`click`, function removePopup(evt) {
         evt.preventDefault();
         removePopup(cloneBanner);
       });
@@ -80,6 +80,6 @@
   };
 
   window.upload = {
-    removeClonePin: removeClonePin
-  }
+    removeClonePin
+  };
 })();

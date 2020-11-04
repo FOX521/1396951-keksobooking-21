@@ -17,33 +17,33 @@
   let chooseRoom = Number(roomNumber.value);
   let chooseGuests = Number(countGuests.value);
 
-  inputTimeIn.addEventListener('change', function() {
-    let selected = this.value;
+  inputTimeIn.addEventListener(`change`, function () {
+    let selected = inputTimeIn.value;
     inputTimeOut.value = selected;
   });
 
-  inputTimeOut.addEventListener('change', function() {
-    let selected = this.value;
+  inputTimeOut.addEventListener(`change`, function () {
+    let selected = inputTimeOut.value;
     inputTimeIn.value = selected;
-  })
+  });
 
   const changePriceHouse = function (evt) {
     evt.stopPropagation();
-      let valueInput = evt.target.value;
-      switch (valueInput) {
-        case `bungalow`:
-          inputPriceHouse.setAttribute(`placeholder`, `0`);
+    let valueInput = evt.target.value;
+    switch (valueInput) {
+      case `bungalow`:
+        inputPriceHouse.setAttribute(`placeholder`, `0`);
         break;
-        case `flat`:
-          inputPriceHouse.setAttribute(`placeholder`, `1000`);
+      case `flat`:
+        inputPriceHouse.setAttribute(`placeholder`, `1000`);
         break;
-        case `house`:
-          inputPriceHouse.setAttribute(`placeholder`, `5000`);
+      case `house`:
+        inputPriceHouse.setAttribute(`placeholder`, `5000`);
         break;
-        case `palace`:
-          inputPriceHouse.setAttribute(`placeholder`, `10 000`);
+      case `palace`:
+        inputPriceHouse.setAttribute(`placeholder`, `10 000`);
         break;
-      };
+    }
   };
 
   inputTypeHouse.addEventListener(`input`, changePriceHouse.bind());
@@ -51,7 +51,6 @@
   inputPriceHouse.addEventListener(`input`, function (evt) {
     evt.stopPropagation();
     let valueInput = evt.target.value;
-    console.log(valueInput)
     if (valueInput >= MAX_PRICE) {
       inputPriceHouse.setCustomValidity(`Превышена максимальная стоимость!`);
     }
@@ -117,7 +116,7 @@
   };
 
   window.validateForm = {
-    setAdress: setAdress,
-    clearForm: clearForm
+    setAdress,
+    clearForm
   };
 })();
