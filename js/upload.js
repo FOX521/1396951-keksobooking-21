@@ -1,5 +1,4 @@
 'use strict';
-(function () {
   let success = `#success`;
   let error = `#error`;
   let element = `div`;
@@ -82,4 +81,3 @@
   window.upload = {
     removeClonePin
   };
-})();

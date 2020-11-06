@@ -1,17 +1,12 @@
 'use strict';
-(function () {
-  let xhr = new XMLHttpRequest();
   const onError = function (error) {
     console.log(error);
   };
-  const onSucces = function (animals) {
-    console.log(animals);
-  };
+  let xhr = new XMLHttpRequest();
   xhr.addEventListener(`load`, function () {
     let error;
     switch (xhr.status) {
       case window.utill.StatusCode.OK:
-        onSucces(xhr.response);
         window.DATA_OFFER = JSON.parse(xhr.responseText);
         window.sortOffers = window.DATA_OFFER;
         break;
@@ -40,4 +35,3 @@
   xhr.timeout = 5000;
   xhr.open(`GET`, `https://21.javascript.pages.academy/keksobooking/data`);
   xhr.send();
-})();

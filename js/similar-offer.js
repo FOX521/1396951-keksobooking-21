@@ -1,5 +1,4 @@
 'use strict';
-(function () {
   let mapFilters = document.querySelector(`.map__filters`);
   let inputTypeHouse = `housing-type`;
   let inputPriceHouse = `housing-price`;
@@ -142,4 +141,3 @@
     }
     getSortOffer();
   }));
-})();
