@@ -76,18 +76,15 @@ function doDebounce(cb) {
     if (count) {
       clearTimeout(count);
     }
-    count = setTimeout(cb.bind(this, evt), 1000);
+    count = setTimeout(cb.bind(null, evt), 1000);
   };
 }
 const makeNewElements = function () {
-  try {
-    window.upload.removeClonePin();
-    window.cards.closeCards();
-    window.makePin.makeOffer(window.sortOffers);
-    window.cards.getClone(window.sortOffers);
-    window.cards.closeCards();
-  } catch (err) {
-  }
+  window.upload.removeClonePin();
+  window.cards.closeCards();
+  window.makePin.makeOffer(window.sortOffers);
+  window.cards.getClone(window.sortOffers);
+  window.cards.closeCards();
 };
 const getSortOffer = function () {
   window.sortOffers = [];

@@ -5,6 +5,8 @@ let imgAvatar = containerPreview.querySelector(`img`);
 let addedFileAvatar = document.querySelector(`.ad-form-header__input`);
 let addedFileFlat = document.querySelector(`.ad-form__input`);
 let containerImgFlat = document.querySelector(`.ad-form__photo`);
+let imgFlat;
+
 const addImageAvatar = function () {
   let file = addedFileAvatar.files[0];
   let fileName = file.name.toLowerCase();
@@ -20,7 +22,7 @@ const addImageAvatar = function () {
   }
 };
 const addImageFlat = function () {
-  let imgFlat = window.makePin.makeElement(`img`, `undefied`);
+  imgFlat = window.makePin.makeElement(`img`, `undefied`);
   imgFlat.setAttribute(`width`, 70);
   imgFlat.setAttribute(`height`, 70);
   containerImgFlat.appendChild(imgFlat);
@@ -39,3 +41,8 @@ const addImageFlat = function () {
 };
 addedFileAvatar.addEventListener(`change`, addImageAvatar);
 addedFileFlat.addEventListener(`change`, addImageFlat);
+
+window.choisePhoto = {
+  imgAvatar,
+  containerImgFlat
+};

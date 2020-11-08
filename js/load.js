@@ -1,6 +1,5 @@
 'use strict';
-const onError = function (error) {
-  console.log(error);
+const onError = function () {
 };
 let xhr = new XMLHttpRequest();
 xhr.addEventListener(`load`, function () {

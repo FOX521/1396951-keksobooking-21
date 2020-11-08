@@ -6,6 +6,7 @@ let mapPinMain = window.utill.mapContainer.querySelector(`.map__pin--main`);
 let mapFilters = document.querySelector(`.map__filters`);
 let selectMapFilters = mapFilters.querySelectorAll(`select`);
 let fieldsetMapFilters = mapFilters.querySelectorAll(`fieldset`);
+
 const disabledMap = function () {
   for (let i = 0; i < fieldsetForm.length; i++) {
     fieldsetForm[i].setAttribute(`disabled`, `disabled`);
@@ -25,6 +26,7 @@ const disabledMap = function () {
     }
   });
 };
+
 disabledMap();
 mapPinMain.addEventListener(`keydown`, function onMapPinMainKeydown(evt) {
   if (evt.keyCode === window.utill.ENTER_KEY) {
@@ -47,5 +49,6 @@ const activeMap = function () {
 };
 window.activeMap = {
   adForm,
-  disabledMap
+  disabledMap,
+  mapPinMain
 };

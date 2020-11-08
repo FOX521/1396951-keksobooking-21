@@ -3,6 +3,7 @@ let success = `#success`;
 let error = `#error`;
 let element = `div`;
 let cloneBanner;
+
 window.utill.form.addEventListener(`submit`, function (evt) {
   evt.preventDefault();
   let formData = new FormData(window.utill.form);
@@ -23,10 +24,13 @@ window.utill.form.addEventListener(`submit`, function (evt) {
         break;
     }
   });
+  window.activeMap.mapPinMain.setAttribute(`style`, `left: 570px; top: 375px;`);
   window.activeMap.disabledMap();
   window.upload.removeClonePin();
   window.cards.closeCards();
+  window.validateForm.clearForm();
 });
+
 const getCloneBanner = function (getId, getElement) {
   let templateBanner = document.querySelector(getId).content;
   let elementBanner = templateBanner.querySelector(getElement);
@@ -41,18 +45,23 @@ const getCloneBanner = function (getId, getElement) {
 const removeClonePin = function () {
   window.makePin.items.forEach((removeElement) => removeElement.remove());
 };
+
 const closePopup = function () {
-  document.addEventListener(`keydown`, function (evt) {
+  document.addEventListener(`keydown`, function onKeyDownPopupClose(evt) {
     if (evt.keyCode === window.utill.ESC_KEY || evt.keyCode === window.utill.ENTER_KEY) {
       evt.preventDefault();
       removePopup(cloneBanner);
+      document.removeEventListener(`keydown`, onKeyDownPopupClose);
     }
   });
-  document.addEventListener(`click`, function (evt) {
+
+  document.addEventListener(`click`, function onClickPopupClose(evt) {
     evt.preventDefault();
     removePopup(cloneBanner);
+    document.removeEventListener(`click`, onClickPopupClose);
   });
 };
+
 const addListeners = function (typeMessage) {
   if (typeMessage === error) {
     let buttonAgain = document.querySelector(`.error__button`);
@@ -66,7 +75,6 @@ const addListeners = function (typeMessage) {
     closePopup();
   }
   window.upload.removeClonePin();
-  window.validateForm.clearForm();
 };
 const removePopup = function (removeElement) {
   removeElement.remove();
