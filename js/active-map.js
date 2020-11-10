@@ -56,5 +56,5 @@ const activeMap = function () {
 window.activeMap = {
   adForm,
   disabledMap,
-  mapPinMain
+  mapPinMain,
 };
