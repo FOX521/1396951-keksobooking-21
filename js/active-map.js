@@ -34,12 +34,11 @@ mapPinMain.addEventListener(`keydown`, function onMapPinMainKeydown(evt) {
   }
 });
 const activeLoad = function () {
-  window.load.removeClonePin();
+  window.load.loadData();
   window.makePin.makeOffer(window.DATA_OFFER);
 };
 const activeMap = function () {
   window.load.removeClonePin();
-  window.load.loadData();
   mainMap.classList.remove(`map--faded`);
   adForm.classList.remove(`ad-form--disabled`);
   for (let i = 0; i < fieldsetForm.length; i++) {
