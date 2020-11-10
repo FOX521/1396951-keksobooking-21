@@ -70,6 +70,5 @@ const getClone = function (data) {
 window.cards = {
   getClone,
   addInfo,
-  flatElement,
   closeCards
 };

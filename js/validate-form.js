@@ -1,7 +1,7 @@
 'use strict';
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
-const MIN_ADDRES_LENGTH = 5;
+const MIN_ADDRESS_LENGTH = 5;
 const MAX_ADDRES_LENGTH = 30;
 const MAX_PRICE = 1000000;
 let resetForm = document.querySelector(`.ad-form__reset`);
@@ -17,13 +17,11 @@ let chooseRoom = Number(roomNumber.value);
 let chooseGuests = Number(countGuests.value);
 
 inputTimeIn.addEventListener(`change`, function () {
-  let selected = inputTimeIn.value;
-  inputTimeOut.value = selected;
+  inputTimeOut.value = inputTimeIn.value;
 });
 
 inputTimeOut.addEventListener(`change`, function () {
-  let selected = inputTimeOut.value;
-  inputTimeIn.value = selected;
+  inputTimeIn.value = inputTimeOut.value;
 });
 
 const changePriceHouse = function (evt) {
@@ -60,8 +58,14 @@ const clearForm = function () {
   window.choisePhoto.imgAvatar.setAttribute(`src`, `img/muffin-grey.svg`);
   addersForm.setAttribute(`value`, ` `);
   window.utill.form.reset();
+  window.activeMap.mapPinMain.setAttribute(`style`, `left: 570px; top: 375px;`);
+  window.load.removeClonePin();
+  window.cards.closeCards();
+  window.activeMap.disabledMap();
   let imgFlat = window.choisePhoto.containerImgFlat.querySelector(`img`);
-  imgFlat.remove();
+  if (imgFlat) {
+    imgFlat.remove();
+  }
 };
 
 resetForm.addEventListener(`click`, function (evt) {
@@ -81,14 +85,14 @@ titleForm.addEventListener(`input`, function () {
   titleForm.reportValidity();
 });
 
-const setAdress = function (coords) {
-  addersForm.setAttribute(`value`, `${coords.resultLeft}px расстояние до острого конца по горизонтали, ${coords.resultTop}px расстояние до острого конца по вертикали`);
+const getCoords = function (coords) {
+  addersForm.setAttribute(`value`, `${coords.resultLeft}px , ${coords.resultTop}px`);
 };
 
 addersForm.addEventListener(`input`, function () {
   let valueLength = addersForm.value.length;
-  if (valueLength < MIN_ADDRES_LENGTH) {
-    addersForm.setCustomValidity(`Необходимо ` + (MIN_ADDRES_LENGTH - valueLength) + ` символов`);
+  if (valueLength < MIN_ADDRESS_LENGTH) {
+    addersForm.setCustomValidity(`Необходимо ` + (MIN_ADDRESS_LENGTH - valueLength) + ` символов`);
   } else if (valueLength > MAX_ADDRES_LENGTH) {
     addersForm.setCustomValidity(`Удалите лишние ` + (valueLength - MAX_ADDRES_LENGTH) + ` символы`);
   } else {
@@ -119,6 +123,6 @@ const compare = function () {
 };
 
 window.validateForm = {
-  setAdress,
+  getCoords,
   clearForm
 };

@@ -9,7 +9,7 @@ let checkboxDish = `filter-dishwasher`;
 let checkboxParking = `filter-parking`;
 let checkboxWasher = `filter-washer`;
 let checkboxElevator = `filter-elevator`;
-let checkboxCondi = `filter-conditioner`;
+let checkboxConditioner = `filter-conditioner`;
 let lowPrice = 10000;
 let middlePrice = 50000;
 let countGuests;
@@ -80,7 +80,7 @@ function doDebounce(cb) {
   };
 }
 const makeNewElements = function () {
-  window.upload.removeClonePin();
+  window.load.removeClonePin();
   window.cards.closeCards();
   window.makePin.makeOffer(window.sortOffers);
   window.cards.getClone(window.sortOffers);
@@ -120,7 +120,7 @@ mapFilters.addEventListener(`change`, doDebounce(function (evt) {
     case checkboxElevator:
       isFeatures.isElevator = evt.target.checked;
       break;
-    case checkboxCondi:
+    case checkboxConditioner:
       isFeatures.isCondicionercioner = evt.target.checked;
       break;
     case checkboxParking:

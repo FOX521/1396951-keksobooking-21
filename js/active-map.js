@@ -33,7 +33,13 @@ mapPinMain.addEventListener(`keydown`, function onMapPinMainKeydown(evt) {
     mapPinMain.removeEventListener(`keydown`, onMapPinMainKeydown);
   }
 });
+const activeLoad = function () {
+  window.load.removeClonePin();
+  window.makePin.makeOffer(window.DATA_OFFER);
+};
 const activeMap = function () {
+  window.load.removeClonePin();
+  window.load.loadData();
   mainMap.classList.remove(`map--faded`);
   adForm.classList.remove(`ad-form--disabled`);
   for (let i = 0; i < fieldsetForm.length; i++) {
@@ -45,7 +51,7 @@ const activeMap = function () {
   for (let i = 0; i < fieldsetMapFilters.length; i++) {
     fieldsetMapFilters[i].removeAttribute(`disabled`);
   }
-  window.makePin.makeOffer(window.DATA_OFFER);
+  setTimeout(activeLoad, 1000);
 };
 window.activeMap = {
   adForm,

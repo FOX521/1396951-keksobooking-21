@@ -26,14 +26,14 @@ buttonPin.addEventListener(`mousedown`, function (evt) {
       buttonPin.style.top = resultTop + `px`;
     }
     buttonPin.style.left = resultLeft + `px`;
-    window.validateForm.setAdress({
+    window.validateForm.getCoords({
       resultTop,
       resultLeft
     });
   };
   const onMouseUp = function (upEvt) {
     upEvt.preventDefault();
-    window.validateForm.setAdress({
+    window.validateForm.getCoords({
       resultTop,
       resultLeft
     });
